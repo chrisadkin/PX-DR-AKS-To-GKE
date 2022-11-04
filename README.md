@@ -40,5 +40,5 @@ to each section for the detailed instructions pertaining to that section:
 1. Create AKS and GKE clusters
 2. Create Azure blob storage container
 3. [Deploy Portworx Enterprise to each cluster](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/deploy-portworx-enterprise/README.md)
-4. [Configure PX-DR]()
-5. [Test failover]()
+4. [Configure PX-DR](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/configure-px-dr/README.md)
+5. [Test failover](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/test-failover/README.md)
