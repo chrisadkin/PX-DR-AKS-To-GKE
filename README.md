@@ -134,3 +134,6 @@ metadata:
    storkctl get clusterpair -n kube-system
    ```
    
+   - Migration Policy / Schedule Namespaces
+
+
