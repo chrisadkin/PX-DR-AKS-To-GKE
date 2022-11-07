@@ -64,13 +64,19 @@ az role definition create --role-definition '{
 
 ## Note
 
-Whilst building the solution you will be required to switch Kubernetes context between the source and destination clusters **a lot**, to make life 
+### Switching Kubernetes Context
+
+Whilst building the solution you will be required to switch Kubernetes contexts between the source and destination clusters **a lot**, to make life 
 simpler when doing this, you may wish to alias some of the kubectl context commands within your shell profile file:
 ```
 gctx='kubectl config get-contexts'
 uctx='kubectl config use-context'
 ```
-  
+### Testing Load Balancer Service Endpoints
+
+Security software from certain vendors, zscaler for example, supresses the ability to ping load balancer endpoint IP addresses, this can be worked
+around using the [node-shell](https://github.com/kvaps/kubectl-node-shell) plugin for kubectl.
+
 ## Build Instructions
 
 The instructions for building and testing the solution are as follows, click on the link
@@ -111,6 +117,4 @@ metadata:
 
 3. Create Azure blob storage container   
 
-4. [Configure PX-DR](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/configure-px-dr/README.md)
-
-5. [Test failover](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/test-failover/README.md)
+4. [Create the Portworx PX-DR cluster pair](https://docs.portworx.com/operations/operate-kubernetes/disaster-recovery/configure-migrations-to-use-service-accounts/)
