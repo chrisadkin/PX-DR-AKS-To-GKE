@@ -66,12 +66,13 @@ az role definition create --role-definition '{
 
 ### Switching Kubernetes Context
 
-Whilst building the solution you will be required to switch Kubernetes contexts between the source and destination clusters **a lot**, to make life 
-simpler when doing this, you may wish to alias some of the kubectl context commands within your shell profile file:
+Building the solution requires frequent changes to the current Kubernetes context, to make life simpler when doing this, you may wish to alias some of the kubectl context commands within your shell profile file:
 ```
 gctx='kubectl config get-contexts'
 uctx='kubectl config use-context'
 ```
+Not only does kubectl use the current context but also storkctl - a Portworx command line tool that is ubiquitous with deploying Portworx PX-DR.
+
 ### Testing Load Balancer Service Endpoints
 
 Security software from certain vendors, zscaler for example, supresses the ability to ping load balancer endpoint IP addresses, this can be worked
@@ -83,7 +84,7 @@ The instructions for building and testing the solution are as follows, click on 
 to each section for the detailed instructions pertaining to that section:
   
 1. Create the AKS cluster  
-   This can be carried out manually via the Azure Portal per the instructions in [this article](https://docs.portworx.com/install-portworx/cloud/azure/aks/), alternatively [this Terraform configuration](https://github.com/chrisadkin/PX-Terraform/blob/main/AKS/README.md) can be used
+   This can be carried out manually via the Azure Portal per the instructions in [this article](https://docs.portworx.com/install-portworx/cloud/azure/aks/), alternatively [this Terraform configuration](https://github.com/chrisadkin/PX-Terraform/blob/main/AKS/README.md) can be used.
 
 2. Deploy Portworx to the AKS Cluster   
    Follow the instructions from the ["Generate Specs"](https://docs.portworx.com/install-portworx/cloud/azure/aks/) section of this article onwards in order to do this.
@@ -115,6 +116,21 @@ metadata:
    Follow the instructions from the ["Generate Specs"](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/) section of this article onwards
    in order to do this.
 
-3. Create Azure blob storage container   
+3. Create Azure blob storage container.   
 
-4. [Create the Portworx PX-DR cluster pair](https://docs.portworx.com/operations/operate-kubernetes/disaster-recovery/configure-migrations-to-use-service-accounts/)
+4. [Create the Portworx PX-DR cluster pair](https://docs.portworx.com/operations/operate-kubernetes/disaster-recovery/configure-migrations-to-use-service-accounts/)  
+
+   **Important**
+   
+   - Cluster Pair Admin Namespace
+   
+   Portworx supports the concept of an "Admin namespace" - kube-system by default, if the clusterpair object is created in an admin namespace all 
+   stateful application that reside on the cluster are protected by Portworx from a disaster recovery standpoint. Otherwise, if an admin namespace
+   is not used, a clusterpair object needs to be created in each application namespace that requires disaster recovery.
+   
+   After the clusterpair is created, note that it is generated on the destination cluster (GKE) and applied to the source cluster (AKS), its health
+   can be ascertained using the following command:
+   ```
+   storkctl get clusterpair -n kube-system
+   ```
+   
