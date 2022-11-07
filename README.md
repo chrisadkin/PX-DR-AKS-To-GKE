@@ -75,6 +75,24 @@ to each section for the detailed instructions pertaining to that section:
 
 3. Create the GKE cluster  
    Carry this activity out via the Google Cloud Platform portal following the instructions in [this article](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/), alternatively the cluster can be created using [this Terraform configuration](https://github.com/chrisadkin/PX-Terraform/blob/main/GKE/README.md).
+   
+   **Important**
+   The portworx_service service on the destination failover cluster (the GKE cluster) needs to have a ServiceType of of LoadBalancer, by
+   default it is a NodePort service, to achieve this ensure that the spec contains the annotation in bold before applying the spec
+```
+kind: StorageCluster
+apiVersion: core.libopenstorage.org/v1
+metadata:
+  name: kyn-gke-destination 
+  namespace: portworx
+  annotations:
+    portworx.io/install-source: "https://install.portworx.com/?operator=true&mc=false&b=true&kd=type%3Dpd-standard%2Csize%3D150&s=%22type%3Dpd-standard%2Csize%3D150%22&j=auto&c=px-cluster-210aba6d-2882-40f3-a50f-856e59155431&gke=true&stork=true&csi=true&mon=true&tel=false&st=k8s&promop=true"
+    portworx.io/is-gke: "true"
+    **portworx.io/service-type: portworx-api:LoadBalancer**
+    .
+    .
+    .
+```
 
 4. Deploy Portworx to the GKE Cluster   
    Follow the instructions from the ["Generate Specs"](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/) section of this article onwards in order to do this.
