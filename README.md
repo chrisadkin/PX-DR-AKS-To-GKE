@@ -61,6 +61,15 @@ az role definition create --role-definition '{
 - Portworx:
   - Portworx Enterprise 2.10
   - PX-DR
+
+## Note
+
+Whilst building the solution you will be required to switch Kubernetes context between the source and destination clusters **a lot**, to make life 
+simpler when doing this you may wish to alias some of the kubectl context commands within your shell profile file:
+```
+gctx='kubectl config get-contexts'
+uctx='kubectl config use-context'
+```
   
 ## Build Instructions
 
@@ -75,10 +84,13 @@ to each section for the detailed instructions pertaining to that section:
 
 3. Create the GKE cluster  
    Carry this activity out via the Google Cloud Platform portal following the instructions in [this article](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/), alternatively the cluster can be created using [this Terraform configuration](https://github.com/chrisadkin/PX-Terraform/blob/main/GKE/README.md).
+
+4. Deploy Portworx to the GKE Cluster   
    
    **Important**
    The portworx_service service on the destination failover cluster (the GKE cluster) needs to have a ServiceType of of LoadBalancer, by
-   default it is a NodePort service, to achieve this ensure that the spec contains the annotation in bold before applying the spec
+   default this is set to NodePort, to achieve this ensure that the spec contains the ```portworx.io/service-type``` annotation per this YAML
+   excerpt: 
 ```
 kind: StorageCluster
 apiVersion: core.libopenstorage.org/v1
@@ -88,16 +100,17 @@ metadata:
   annotations:
     portworx.io/install-source: "https://install.portworx.com/?operator=true&mc=false&b=true&kd=type%3Dpd-standard%2Csize%3D150&s=%22type%3Dpd-standard%2Csize%3D150%22&j=auto&c=px-cluster-210aba6d-2882-40f3-a50f-856e59155431&gke=true&stork=true&csi=true&mon=true&tel=false&st=k8s&promop=true"
     portworx.io/is-gke: "true"
-    **portworx.io/service-type: portworx-api:LoadBalancer**
+    portworx.io/service-type: portworx-api:LoadBalancer
     .
     .
     .
 ```
 
-4. Deploy Portworx to the GKE Cluster   
-   Follow the instructions from the ["Generate Specs"](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/) section of this article onwards in order to do this.
+   Follow the instructions from the ["Generate Specs"](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/) section of this article onwards
+   in order to do this.
 
 3. Create Azure blob storage container   
-4. [Deploy Portworx Enterprise to each cluster](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/deploy-portworx-enterprise/README.md)
-5. [Configure PX-DR](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/configure-px-dr/README.md)
-6. [Test failover](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/test-failover/README.md)
+
+4. [Configure PX-DR](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/configure-px-dr/README.md)
+
+5. [Test failover](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/test-failover/README.md)
