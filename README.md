@@ -67,8 +67,13 @@ az role definition create --role-definition '{
 The instructions for building and testing the solution are as follows, click on the link
 to each section for the detailed instructions pertaining to that section:
 
-1. Create AKS and GKE clusters
-2. Create Azure blob storage container
-3. [Deploy Portworx Enterprise to each cluster](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/deploy-portworx-enterprise/README.md)
-4. [Configure PX-DR](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/configure-px-dr/README.md)
-5. [Test failover](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/test-failover/README.md)
+1. Create the AKS cluster
+   This can be carried out manually via the Azure Portal per the instructions in [this article](https://docs.portworx.com/install-portworx/cloud/azure/aks/), alternatively [this Terraform configuration](https://github.com/chrisadkin/PX-Terraform/blob/main/AKS/README.md) can be used
+
+2. Create the GKE cluster
+   Carry this activity out via the Google Cloud Platform portal following the instructions in [this article](https://docs.portworx.com/install-portworx/cloud/gcp/gke/operator/), alternatively the cluster can be created using [this Terraform configuration](https://github.com/chrisadkin/PX-Terraform/blob/main/GKE/README.md).
+
+3. Create Azure blob storage container
+4. [Deploy Portworx Enterprise to each cluster](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/deploy-portworx-enterprise/README.md)
+5. [Configure PX-DR](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/configure-px-dr/README.md)
+6. [Test failover](https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/test-failover/README.md)
