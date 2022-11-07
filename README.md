@@ -15,15 +15,45 @@ diagram below:
   - Boot disk size per node: 100 GB 
   - Kubernetes version 1.22.12-gke.2300 
   - Cluster service account roles:
+    - roles/iam.serviceAccountUser
+    - roles/compute.admin
+    - roles/container.clusterViewer    
   - Cluster OATH scopes: 
-
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/monitoring
+    
 - AKS Cluster
   - Three worker node cluster
   - Worker node machine type: standard_d8as_v4
   - Worker node image type: Linux
   - Boot disk size per node: 128 GB
   - Kubernetes version: 1.23.8
-  - Cluster service principal roles:
+  - A service principal with the following custom role definition:
+
+```
+az role definition create --role-definition '{
+"Name": "<your-role-name>",
+"Description": "",
+"AssignableScopes": [
+    "/subscriptions/<your-subscription-id>"
+],
+"Actions": [
+    "Microsoft.ContainerService/managedClusters/agentPools/read",
+    "Microsoft.Compute/disks/delete",
+    "Microsoft.Compute/disks/write",
+    "Microsoft.Compute/disks/read",
+    "Microsoft.Compute/virtualMachines/write",
+    "Microsoft.Compute/virtualMachines/read",
+    "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/write",
+    "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read"
+],
+"NotActions": [],
+"DataActions": [],
+"NotDataActions": []
+}'
+```
+
   - Load balancer sku: standard
   
 - Object storage for PX-DR: Azure blob storage
