@@ -65,7 +65,7 @@ az role definition create --role-definition '{
 ## Note
 
 Whilst building the solution you will be required to switch Kubernetes context between the source and destination clusters **a lot**, to make life 
-simpler when doing this you may wish to alias some of the kubectl context commands within your shell profile file:
+simpler when doing this, you may wish to alias some of the kubectl context commands within your shell profile file:
 ```
 gctx='kubectl config get-contexts'
 uctx='kubectl config use-context'
