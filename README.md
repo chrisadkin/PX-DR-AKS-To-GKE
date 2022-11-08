@@ -62,7 +62,7 @@ az role definition create --role-definition '{
   - Portworx Enterprise 2.10
   - PX-DR
 
-## Note
+## Useful Tips
 
 ### Switching Kubernetes Context
 
@@ -134,10 +134,12 @@ metadata:
    storkctl get clusterpair -n kube-system
    ```
    
+   Any namespace can be turned into an admin namespace by adding the annotation  ```spec.stork.args.admin-namespace```
+   
    - Migration Schedule Policy / Policy Namespaces
 
    In essence Portworx PX-DR with asynchronous replication works by periodically backing up the contents of namespace(s) to object storage, when a
-   failover is instigated the latest backup is restored to the destination cluster. To use Portworx PX-DR terminology a backup is referred to as 
+   failover is instigated the latest backup is restored to the destination cluster. To use Portworx PX-DR terminology, a backup is referred to as 
    migration. There are two options for creating the migration schedule policy and policy objects, if the user deploying the solution has permissions
    to use an admin namespace, the migration schedule policy and policy can be created in an admin namespace along with the clusterpair, otherwise all
    three objects: the clusterpair, migration schedule policy and migration policy should be created in the same namespace(s) as the application which
