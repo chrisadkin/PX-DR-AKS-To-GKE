@@ -33,10 +33,13 @@ An external etcd instance only has to be used for the Portworx PX-DR metro solut
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/8_Px_AKS_spec.png?raw=true">
 
-9. Hit Agree to agree to the terms and conditions of using Portworx:
+9. Hit 'Agree' to agree to the terms and conditions of using Portworx:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/9_Px_AKS_spec.png?raw=true">
 
-10. Click on the cloud radio button and select Azure from the pulldown list of values and then hit Next in the bottom right hand corner:
+10. On the final screen the spec can be given a name and a tag, there are two options for deploying the spec:
+    
+    - Use the kubectl commands provided that leverage the operator and spec via URLs
+    - Download the spec and deploy it from a local file system
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/10_Px_AKS_spec.png?raw=true">
