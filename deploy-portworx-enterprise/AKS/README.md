@@ -6,17 +6,17 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/2_Px_AKS_spec.png?raw=true">
 
-3. Select the radio button for the Portworx Enterprise 30 day trial
+3. Select the radio button for the Portworx Enterprise 30 day trial:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/3_Px_AKS_spec.png?raw=true">
 
-4. Select the version of Portworx you wish to deploy, 2.12 at the time of writing this, enter a namespace to deploy Portworx to and clock on the radio button for using the internal etcd instance.
+4. Select the version of Portworx you wish to deploy, 2.12 at the time of writing this, enter a namespace to deploy Portworx to and clock on the radio button for using the internal etcd instance:
 
 **Note**
 An external etcd instance only has to be used for the Portworx PX-DR metro solution.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/4_Px_AKS_spec.png?raw=true">
 
-5.
+5. Click on the cloud radio button and select Azure from the pulldown list of values:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/5_Px_AKS_spec.png?raw=true">
