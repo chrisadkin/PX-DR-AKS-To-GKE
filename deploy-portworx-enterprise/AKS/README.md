@@ -6,7 +6,7 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/2_Px_AKS_spec.png?raw=true">
 
-3.
+3. Select the radio button for the Portworx Enterprise 30 day trial
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/3_Px_AKS_spec.png?raw=true">
 
