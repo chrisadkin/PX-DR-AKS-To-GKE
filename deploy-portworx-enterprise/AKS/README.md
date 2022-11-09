@@ -21,7 +21,7 @@ An external etcd instance only has to be used for the Portworx PX-DR metro solut
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/5_Px_AKS_spec.png?raw=true">
 
-6. Click on the cloud radio button and select Azure from the pulldown list of values and then hit Next in the bottom right hand corner:
+6. Click on the "Auto create Journal devic" radio button and then hit Next in the bottom right hand corner:
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/6_Px_AKS_spec.png?raw=true">
 
