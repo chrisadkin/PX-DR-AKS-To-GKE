@@ -1,4 +1,4 @@
-1.
+1. Log into [Portworx Central](https://central.portworx.com/), create a login by registering if required if you have not already done this.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/1_Px_AKS_spec.png?raw=true">
 
