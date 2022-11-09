@@ -10,7 +10,10 @@
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/3_Px_AKS_spec.png?raw=true">
 
-4.
+4. Select the version of Portworx you wish to deploy, 2.12 at the time of writing this, enter a namespace to deploy Portworx to and clock on the radio button for using the internal etcd instance.
+
+**Note**
+An external etcd instance only has to be used for the Portworx PX-DR metro solution.
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/chrisadkin/PX-DR-AKS-To-GKE/blob/main/images/4_Px_AKS_spec.png?raw=true">
 
